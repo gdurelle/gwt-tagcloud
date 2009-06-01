@@ -25,10 +25,10 @@ public class TagCloud extends Composite {
         maxOccurences = 1;
         step = 1;// 'average' difference between each occurence
         DecoratorPanel dec = new DecoratorPanel();
-        populate();
         dec.setWidget(cloud);
         dec.setWidth("400px");
         initWidget(dec);
+        populate();
     }
 
     /*
@@ -37,7 +37,6 @@ public class TagCloud extends Composite {
     private void populate() {
 
         for (int i = 0; i < 50; i++) {
-            // words.add(new Word("abc" + i, "link" + i));
             addWord(new Word("abc" + i, "link" + i));
         }
 
@@ -50,7 +49,7 @@ public class TagCloud extends Composite {
                 }
             }
         }
-        
+
         refresh();
     }
 
@@ -198,7 +197,7 @@ public class TagCloud extends Composite {
      */
     public void setColored(boolean isColored) {
         this.isColored = isColored;
-        if(this.isColored)
+        if (this.isColored)
             refresh();
     }
 }
