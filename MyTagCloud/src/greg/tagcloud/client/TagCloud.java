@@ -1,17 +1,22 @@
 package greg.tagcloud.client;
 
+import greg.tagcloud.client.tags.ImageTag;
+import greg.tagcloud.client.tags.Tag;
+import greg.tagcloud.client.tags.Word;
+
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.InlineHTML;
 
 public class TagCloud extends Composite {
 
     private FlowPanel cloud;
-    private ArrayList<Word> words;
-    private int maxNumberOfWords;// the number of words shown in the cloud.
+    private ArrayList<Tag> tags;
+    private int maxNumberOfTags;// the number of tags shown in the cloud.
     private int minOccurences, maxOccurences, step;
     private boolean isColored;
 
@@ -19,8 +24,8 @@ public class TagCloud extends Composite {
 
     public TagCloud() {
         cloud = new FlowPanel();
-        words = new ArrayList<Word>();
-        maxNumberOfWords = 20;
+        tags = new ArrayList<Tag>();
+        maxNumberOfTags = 20;
         minOccurences = 1;
         maxOccurences = 1;
         step = 1;// 'average' difference between each occurence
@@ -37,16 +42,25 @@ public class TagCloud extends Composite {
     private void populate() {
 
         for (int i = 0; i < 50; i++) {
-            addWord(new Word("abc" + i, "link" + i));
+            if (i == 15) {
+                Image im = new Image("/pdf.PNG");
+                addImage(new ImageTag(im));
+            } else if (i == 18) {
+                addImage(new ImageTag("/odt.PNG"));
+            } else if (i == 32) {
+                addImage(new ImageTag("http://media.linkedin.com/mpr/mpr/shrink_80_80/p/3/000/01c/01d/2192909.jpg"));
+            } else
+                addWord(new Word("abc" + i, "link" + i));
         }
 
         for (int i = 0; i < 100; i++) {
             double r = Math.random() * 10;
             int seed = (int) Math.floor(r) + 1;
             for (int j = 0; j < 50; j++) {
-                if (j == seed) {
-                    words.get(j).increaseNumberOfOccurences();
-                }
+                if (j == 10)
+                    if (j == seed) {
+                        tags.get(j).increaseNumberOfOccurences();
+                    }
             }
         }
 
@@ -60,14 +74,35 @@ public class TagCloud extends Composite {
      */
     public void addWord(Word word) {
         boolean exist = false;
-        for (Word w : words) {
-            if (w.getWord().equalsIgnoreCase(word.getWord())) {
-                w.increaseNumberOfOccurences();
-                exist = true;
+        for (Tag w : tags) {
+            if (w instanceof Word) {
+                if (((Word) w).getWord().equalsIgnoreCase(word.getWord())) {
+                    w.increaseNumberOfOccurences();
+                    exist = true;
+                }
             }
         }
         if (!exist)
-            words.add(word);
+            tags.add(word);
+        refresh();
+    }
+
+    /**
+     * Add an image to the tagcloud list
+     * @param image
+     */
+    public void addImage(ImageTag image) {
+        boolean exist = false;
+        for (Tag w : tags) {
+            if (w instanceof ImageTag) {
+                if (((ImageTag) w).getUrl().equalsIgnoreCase(image.getUrl())) {
+                    w.increaseNumberOfOccurences();
+                    exist = true;
+                }
+            }
+        }
+        if (!exist)
+            tags.add(image);
         refresh();
     }
 
@@ -77,9 +112,9 @@ public class TagCloud extends Composite {
      */
     public void refresh() {
         cloud.clear();
-        if (words != null && !words.isEmpty()) {
+        if (tags != null && !tags.isEmpty()) {
             // recalculate max and min of all occurences
-            for (Word w : words) {
+            for (Tag w : tags) {
                 if (w.getNumberOfOccurences() > maxOccurences)
                     maxOccurences = w.getNumberOfOccurences();
                 if (w.getNumberOfOccurences() < minOccurences)
@@ -89,8 +124,15 @@ public class TagCloud extends Composite {
             // a step correspond to a css style.
             step = (maxOccurences - minOccurences) / STEP_NUMBER;
 
-            for (Word w : words) {
-                InlineHTML inline = setInlineHTML(w);
+            for (Tag w : tags) {
+                InlineHTML inline = null;
+                if (w instanceof Word)
+                    inline = setInlineHTML((Word) w);
+                else {
+                    Image ima = ((ImageTag) w).getImage();
+                    inline = new InlineHTML(" <a href='" + w.getLink() + "'><img src='" + ima.getUrl() + "'</a>");
+                    inline.addStyleName("tag");
+                }
                 cloud.add(inline);
             }
         }
@@ -179,11 +221,11 @@ public class TagCloud extends Composite {
     }
 
     public int getMaxNumberOfWords() {
-        return maxNumberOfWords;
+        return maxNumberOfTags;
     }
 
     public void setMaxNumberOfWords(int numberOfWords) {
-        this.maxNumberOfWords = numberOfWords;
+        this.maxNumberOfTags = numberOfWords;
     }
 
     public boolean isColored() {
