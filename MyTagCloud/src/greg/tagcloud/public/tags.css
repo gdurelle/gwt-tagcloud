@@ -7,6 +7,10 @@
 	text-decoration: underline;
 }
 
+.tag a img{
+	border: none;
+}
+
 .tag1 a {
 	font-size: 0.7em;
 	font-weight: 100;
