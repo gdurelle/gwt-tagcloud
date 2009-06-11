@@ -53,11 +53,10 @@ public class TagCloud extends Composite {
                 addWord(new Word("abc" + i, "link" + i));
         }
 
-        for (int i = 0; i < 100; i++) {
-            double r = Math.random() * 10;
+        for (int i = 0; i < 500; i++) {
+            double r = Math.random() * 50;
             int seed = (int) Math.floor(r) + 1;
             for (int j = 0; j < 50; j++) {
-                if (j == 10)
                     if (j == seed) {
                         tags.get(j).increaseNumberOfOccurences();
                     }
