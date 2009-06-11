@@ -1,5 +1,7 @@
 package greg.tagcloud.client;
 
+import greg.tagcloud.client.tags.TagCloud;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 
