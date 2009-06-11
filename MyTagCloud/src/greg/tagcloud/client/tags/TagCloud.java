@@ -1,8 +1,5 @@
-package greg.tagcloud.client;
+package greg.tagcloud.client.tags;
 
-import greg.tagcloud.client.tags.ImageTag;
-import greg.tagcloud.client.tags.Tag;
-import greg.tagcloud.client.tags.Word;
 
 import java.util.ArrayList;
 
