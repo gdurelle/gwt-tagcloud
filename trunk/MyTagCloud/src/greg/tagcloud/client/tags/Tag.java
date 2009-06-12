@@ -1,8 +1,11 @@
 package greg.tagcloud.client.tags;
 
-public abstract class Tag {
+import java.io.Serializable;
 
-//    private int _id;
+public abstract class Tag implements Serializable{
+
+    private static final long serialVersionUID = 2153391657389702774L;
+    //    private int _id;
     protected String link;
     protected int numberOfOccurences;
 
@@ -24,5 +27,11 @@ public abstract class Tag {
     public void increaseNumberOfOccurences() {
         numberOfOccurences++;
     }
+    
+    @Override
+    public abstract int hashCode();
+    
+    @Override
+    public abstract boolean equals(Object obj);
 
 }

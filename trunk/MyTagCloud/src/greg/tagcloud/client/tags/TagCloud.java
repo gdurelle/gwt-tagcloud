@@ -2,6 +2,7 @@ package greg.tagcloud.client.tags;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
@@ -12,7 +13,7 @@ import com.google.gwt.user.client.ui.InlineHTML;
 public class TagCloud extends Composite {
 
     private FlowPanel cloud;
-    private ArrayList<Tag> tags;
+    private List<Tag> tags;
     private int maxNumberOfTags;// the number of tags shown in the cloud.
     private int minOccurences, maxOccurences, step;
     private boolean isColored;
@@ -37,7 +38,7 @@ public class TagCloud extends Composite {
     public void populate() {
 
         for (int i = 0; i < 50; i++) {
-            addWord(new Word("abc" + i, "link" + i));
+            addWord(new WordTag("abc" + i, "link" + i));
         }
 
         for (int i = 0; i < 500; i++) {
@@ -58,11 +59,11 @@ public class TagCloud extends Composite {
      * 
      * @param word
      */
-    public void addWord(Word word) {
+    public void addWord(WordTag word) {
         boolean exist = false;
         for (Tag w : tags) {
-            if (w instanceof Word) {
-                if (((Word) w).getWord().equalsIgnoreCase(word.getWord())) {
+            if (w instanceof WordTag) {
+                if (((WordTag) w).getWord().equalsIgnoreCase(word.getWord())) {
                     w.increaseNumberOfOccurences();
                     exist = true;
                 }
@@ -112,8 +113,8 @@ public class TagCloud extends Composite {
 
             for (Tag w : tags) {
                 InlineHTML inline = null;
-                if (w instanceof Word)
-                    inline = setInlineHTML((Word) w);
+                if (w instanceof WordTag)
+                    inline = setInlineHTML((WordTag) w);
                 else {
                     Image ima = ((ImageTag) w).getImage();
                     inline = new InlineHTML(" <a href='" + w.getLink() + "'><img src='" + ima.getUrl() + "'</a>");
@@ -122,6 +123,10 @@ public class TagCloud extends Composite {
                 cloud.add(inline);
             }
         }
+    }
+    
+    public void shuffle(){
+//        Collections.shuffle(tags);
     }
 
     /**
@@ -133,7 +138,7 @@ public class TagCloud extends Composite {
      *            The Word object to display
      * @return The InlinHTML object that fits in the cloud
      */
-    private InlineHTML setInlineHTML(Word w) {
+    private InlineHTML setInlineHTML(WordTag w) {
         int nboc = w.getNumberOfOccurences();
 
         InlineHTML inline = new InlineHTML(" <a href='" + w.getLink() + "'>" + w.getWord() + "</a>");
