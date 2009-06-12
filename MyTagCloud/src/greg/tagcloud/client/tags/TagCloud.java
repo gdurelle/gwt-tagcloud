@@ -28,26 +28,16 @@ public class TagCloud extends Composite {
         step = 1;// 'average' difference between each occurence
         DecoratorPanel dec = new DecoratorPanel();
         dec.setWidget(cloud);
-        dec.setWidth("400px");
         initWidget(dec);
-        populate();
     }
 
     /*
      * Dev method TO BE DELETED
      */
-    private void populate() {
+    public void populate() {
 
         for (int i = 0; i < 50; i++) {
-            if (i == 15) {
-                Image im = new Image("/pdf.PNG");
-                addImage(new ImageTag(im));
-            } else if (i == 18) {
-                addImage(new ImageTag("/odt.PNG"));
-            } else if (i == 32) {
-                addImage(new ImageTag("http://media.linkedin.com/mpr/mpr/shrink_80_80/p/3/000/01c/01d/2192909.jpg"));
-            } else
-                addWord(new Word("abc" + i, "link" + i));
+            addWord(new Word("abc" + i, "link" + i));
         }
 
         for (int i = 0; i < 500; i++) {
