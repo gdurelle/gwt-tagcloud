@@ -2,9 +2,14 @@ package greg.tagcloud.client.tags;
 
 import com.google.gwt.user.client.ui.Image;
 
+@SuppressWarnings("serial")
 public class ImageTag extends Tag {
     
     private Image image;
+    
+    public ImageTag() {
+        super();
+    }
 
     public ImageTag(Image image) {
         this.image = image;
@@ -37,6 +42,19 @@ public class ImageTag extends Tag {
     
     public String getUrl(){
         return image.getUrl();
+    }
+
+    @Override
+    public int hashCode() {
+        return link.hashCode();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (!( obj instanceof Tag)){
+            return false;
+        }
+        return link.equals(((Tag)obj).getLink());
     }
     
 }
