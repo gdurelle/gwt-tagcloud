@@ -1,0 +1,11 @@
+= 3 Steps to use gwt-tagcloud=
+
+ * Add the *TagCloud.jar* file to your project _( war/WEB_INF/lib/TagCloud.jar )_
+
+ * Add it to your build path _( right click > Build Path > Add to Build Path )_
+
+ * Add the following line to your project xml description file _( *.gwt.xml )_ : 
+    '<inherits name="gdurelle.tagcloud.TagCloud"/>'
+
+
+That's it !
