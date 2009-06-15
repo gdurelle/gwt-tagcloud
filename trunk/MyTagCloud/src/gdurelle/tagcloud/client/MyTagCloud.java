@@ -1,7 +1,7 @@
-package greg.tagcloud.client;
+package gdurelle.tagcloud.client;
 
-import greg.tagcloud.client.tags.ImageTag;
-import greg.tagcloud.client.tags.TagCloud;
+import gdurelle.tagcloud.client.tags.ImageTag;
+import gdurelle.tagcloud.client.tags.TagCloud;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.Image;

@@ -1,4 +1,4 @@
-package greg.tagcloud.client.tags;
+package gdurelle.tagcloud.client.tags;
 
 
 @SuppressWarnings("serial")
