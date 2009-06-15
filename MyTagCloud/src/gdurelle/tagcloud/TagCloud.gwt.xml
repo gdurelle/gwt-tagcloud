@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6.4//EN" "http://google-web-toolkit.googlecode.com/svn/tags/1.6.4/distro-source/core/src/gwt-module.dtd">
-<module rename-to='mytagcloud'>
+<module rename-to='tagcloud'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
 
@@ -15,5 +15,5 @@
   <stylesheet src="tags.css"/>
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='greg.tagcloud.client.MyTagCloud'/>
+  <entry-point class='gdurelle.tagcloud.client.MyTagCloud'/>
 </module>
