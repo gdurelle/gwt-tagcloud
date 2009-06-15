@@ -16,7 +16,6 @@ public class MyTagCloud implements EntryPoint {
         TagCloud cloud = new TagCloud();
         cloud.setColored(true);
         cloud.populate();
-        cloud.shuffle();
         cloud.setWidth("400px");
         RootPanel.get("content").add(cloud);
 

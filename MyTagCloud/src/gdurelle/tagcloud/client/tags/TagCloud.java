@@ -1,6 +1,5 @@
 package gdurelle.tagcloud.client.tags;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,13 +44,24 @@ public class TagCloud extends Composite {
             double r = Math.random() * 50;
             int seed = (int) Math.floor(r) + 1;
             for (int j = 0; j < 50; j++) {
-                    if (j == seed) {
-                        tags.get(j).increaseNumberOfOccurences();
-                    }
+                if (j == seed) {
+                    tags.get(j).increaseNumberOfOccurences();
+                }
             }
         }
-
         refresh();
+    }
+
+    /**
+     * Set the whole list of tags given in paramter to be the current tags list.
+     * 
+     * @param tags
+     */
+    public void setTags(List<Tag> tags) {
+        if (this.tags == null)
+            this.tags = new ArrayList<Tag>();
+        this.tags.clear();
+        this.tags.addAll(tags);
     }
 
     /**
@@ -76,6 +86,7 @@ public class TagCloud extends Composite {
 
     /**
      * Add an image to the tagcloud list
+     * 
      * @param image
      */
     public void addImage(ImageTag image) {
@@ -123,10 +134,6 @@ public class TagCloud extends Composite {
                 cloud.add(inline);
             }
         }
-    }
-    
-    public void shuffle(){
-//        Collections.shuffle(tags);
     }
 
     /**
