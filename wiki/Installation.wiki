@@ -1,6 +1,6 @@
 = 3 Steps to use gwt-tagcloud=
 
- * Add the *jar* file to your project _( war/WEB_INF/lib/TagCloud'.'jar )_
+ * Add the *tagcloud_xxx.jar* file to your project _( war/WEB_INF/lib/tagcloud_0.1a.jar )_
 
  * Add it to your build path _( right click > Build Path > Add to Build Path )_
 
