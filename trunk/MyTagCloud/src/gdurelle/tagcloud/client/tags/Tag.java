@@ -5,10 +5,19 @@ import java.io.Serializable;
 public abstract class Tag implements Serializable{
 
     private static final long serialVersionUID = 2153391657389702774L;
-    //    private int _id;
+    private String id;
     protected String link;
     protected int numberOfOccurences;
 
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public String getLink() {
         return link;
     }
@@ -19,6 +28,10 @@ public abstract class Tag implements Serializable{
 
     public int getNumberOfOccurences() {
         return numberOfOccurences;
+    }
+    
+    public void setNumberOfOccurences(int occurency){
+        numberOfOccurences = occurency;
     }
 
     /**
