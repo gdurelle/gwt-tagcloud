@@ -26,7 +26,7 @@ public class MyAppTagCloud implements EntryPoint {
 
     public void onModuleLoad() {
         cloud.setColored(true);
-        cloud.setWidth("200px");
+        cloud.setWidth("400px");
         
         service.getTags(new AsyncCallback<List<Tag>>(){
 
