@@ -13,11 +13,11 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>tagService</servlet-name>
-    <servlet-class>gdurelle.app.tagcloud.server.TagServiceImpl</servlet-class>
+    <servlet-class>gdurelle.tagcloud.server.TagServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>tagService</servlet-name>
-    <url-pattern>/myapptagcloud/tags</url-pattern>
+    <url-pattern>/myapptagcloud/tagService</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,7 +1,7 @@
-package gdurelle.app.tagcloud.client;
+package gdurelle.tagcloud.client;
 
-import gdurelle.app.tagcloud.client.tag.Tag;
-import gdurelle.app.tagcloud.client.tag.TagCloud;
+import gdurelle.tagcloud.client.tags.Tag;
+import gdurelle.tagcloud.client.tags.TagCloud;
 
 import java.util.List;
 
