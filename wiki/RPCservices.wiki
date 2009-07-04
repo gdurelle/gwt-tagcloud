@@ -1,14 +1,6 @@
 = RPC Services =
 
-You just have to create a class in you _server_ package that inherits from `TagServiceImpl` : 
-
-{{{
-public class MyTagService extends TagServiceImpl {
-
-}
-}}}
-
-Do not forget to add the following lines in your _war/WEB_INF/web.xml file_ : 
+You just have add the following lines in your _war/WEB_INF/web.xml file_ : 
 
 {{{
 <servlet>
