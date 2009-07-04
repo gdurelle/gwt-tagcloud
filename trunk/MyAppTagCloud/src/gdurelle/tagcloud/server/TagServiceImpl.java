@@ -1,10 +1,10 @@
-package gdurelle.app.tagcloud.server;
+package gdurelle.tagcloud.server;
 
-import gdurelle.app.tagcloud.client.TagService;
-import gdurelle.app.tagcloud.client.tag.Tag;
-import gdurelle.app.tagcloud.server.tags.TagBean;
-import gdurelle.app.tagcloud.server.tags.TagDTO;
-import gdurelle.app.tagcloud.server.tags.WordTagBean;
+import gdurelle.tagcloud.client.TagService;
+import gdurelle.tagcloud.client.tags.Tag;
+import gdurelle.tagcloud.server.tags.TagBean;
+import gdurelle.tagcloud.server.tags.TagDTO;
+import gdurelle.tagcloud.server.tags.WordTagBean;
 
 import java.util.ArrayList;
 import java.util.List;

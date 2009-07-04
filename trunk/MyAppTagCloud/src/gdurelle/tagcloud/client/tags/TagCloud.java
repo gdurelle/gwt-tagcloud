@@ -1,4 +1,4 @@
-package gdurelle.app.tagcloud.client.tag;
+package gdurelle.tagcloud.client.tags;
 
 import java.util.ArrayList;
 import java.util.List;

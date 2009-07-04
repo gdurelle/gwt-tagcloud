@@ -1,7 +1,7 @@
-package gdurelle.app.tagcloud.server.tags;
+package gdurelle.tagcloud.server.tags;
 
-import gdurelle.app.tagcloud.client.tag.Tag;
-import gdurelle.app.tagcloud.client.tag.WordTag;
+import gdurelle.tagcloud.client.tags.Tag;
+import gdurelle.tagcloud.client.tags.WordTag;
 
 public class TagDTO {
     public static Tag convertToTag(TagBean tagbean){

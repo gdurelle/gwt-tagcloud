@@ -1,4 +1,4 @@
-package gdurelle.app.tagcloud.server.tags;
+package gdurelle.tagcloud.server.tags;
 
 
 import javax.jdo.annotations.IdentityType;
