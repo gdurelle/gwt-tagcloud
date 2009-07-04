@@ -1,0 +1,30 @@
+= RPC Services =
+
+You just have to create a class in you _server_ package that inherits from *TagServiceImpl* : 
+
+{{{
+public class MyTagService extends TagServiceImpl {
+
+}
+}}}
+
+Do not forget to add the following lines in your _war/WEB_INF/web.xml file_ : 
+
+{{{
+<servlet>
+    <servlet-name>tagService</servlet-name>
+    <servlet-class>gdurelle.tagcloud.server.TagServiceImpl</servlet-class>
+</servlet>
+  
+<servlet-mapping>
+    <servlet-name >tagService</servlet-name>
+    <url-pattern >/tagcloud/tagService</url-pattern>
+</servlet-mapping>
+}}}
+
+Replacing *tagcloud* in the _url-pattern_ by the name given in your project xml description file _( *.gwt.xml )_ : 
+{{{
+<module rename-to='myproject'>
+   ...
+</module>
+}}}
