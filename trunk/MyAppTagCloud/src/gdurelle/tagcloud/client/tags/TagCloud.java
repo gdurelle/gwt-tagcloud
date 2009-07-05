@@ -53,7 +53,8 @@ public class TagCloud extends Composite {
 	}
 
 	/**
-	 * Set the whole list of tags given in paramter to be the current tags list.
+	 * Set the whole list of tags given in parameter to be the current tags
+	 * list.
 	 * 
 	 * @param tags
 	 */
@@ -64,12 +65,13 @@ public class TagCloud extends Composite {
 		if (tags != null)
 			this.tags.addAll(tags);
 	}
-	
+
 	/**
 	 * Retrieve the list of tags in the cloud.
+	 * 
 	 * @return
 	 */
-	public List<Tag> getTags(){
+	public List<Tag> getTags() {
 		return tags;
 	}
 
@@ -112,8 +114,8 @@ public class TagCloud extends Composite {
 	}
 
 	/**
-	 * Refresh the display of the tagcloud. Usually used after an adding of
-	 * word.
+	 * Refresh the display of the tagcloud. Usually used after an adding or
+	 * deletion of word.
 	 */
 	public void refresh() {
 		cloud.clear();
@@ -135,7 +137,8 @@ public class TagCloud extends Composite {
 					inline = setInlineHTML((WordTag) w);
 				else {
 					Image ima = ((ImageTag) w).getImage();
-					inline = new InlineHTML(" <a href='" + w.getLink()+ "'><img src='" + ima.getUrl() + "'</a>");
+					inline = new InlineHTML(" <a href='" + w.getLink()
+							+ "'><img src='" + ima.getUrl() + "'</a>");
 					inline.addStyleName("tag");
 				}
 				cloud.add(inline);
@@ -148,14 +151,14 @@ public class TagCloud extends Composite {
 	 * maximum, and average number of occurences of all words. It create a link
 	 * in a span with the appropriate font style/size
 	 * 
-	 * @param w
-	 *            The Word object to display
+	 * @param w The Word object to display
 	 * @return The InlinHTML object that fits in the cloud
 	 */
 	private InlineHTML setInlineHTML(WordTag w) {
 		int nboc = w.getNumberOfOccurences();
 
-		InlineHTML inline = new InlineHTML(" <a href='" + w.getLink() + "'>"+ w.getWord() + "</a>&nbsp;");
+		InlineHTML inline = new InlineHTML(" <a href='" + w.getLink() + "'>"
+				+ w.getWord() + "</a>&nbsp;");
 		inline.addStyleName("tag");
 
 		// Apply the good style corersponding to the number of occurences
@@ -183,6 +186,12 @@ public class TagCloud extends Composite {
 
 		// applying color if needed
 		if (isColored) {
+			if (w.getColor() != null) {
+				inline.addStyleName(w.getColor());
+				return inline;
+			}
+			
+			//if no default color is set on the word, apply a random one
 			double r = Math.random() * 10;
 			int seed = (int) Math.floor(r) + 1;
 			switch (seed) {
@@ -211,13 +220,13 @@ public class TagCloud extends Composite {
 				inline.addStyleName("brown");
 				break;
 			case 9:
-				inline.addStyleName("blue");
+				inline.addStyleName("lightgrey");
 				break;
 			case 10:
 				inline.addStyleName("grey");
 				break;
 			default:
-				inline.addStyleName("black");
+				inline.addStyleName("darkgrey");
 				break;
 			}
 		}

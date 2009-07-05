@@ -11,6 +11,8 @@ public class WordTagBean extends TagBean{
     private static final long serialVersionUID = -723618637756771994L;
     @Persistent
     private String word;
+    @Persistent
+    private String color;
     
     public WordTagBean() {
         super();
@@ -34,7 +36,15 @@ public class WordTagBean extends TagBean{
         this.word = word;
     }
     
-    @Override
+    public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	@Override
     public int hashCode() {
         return word.hashCode();
     }

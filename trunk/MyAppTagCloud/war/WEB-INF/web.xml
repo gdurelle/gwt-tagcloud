@@ -4,7 +4,6 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>MyAppTagCloud.html</welcome-file>
