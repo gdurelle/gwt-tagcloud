@@ -74,6 +74,16 @@ public class MyAppTagCloud implements EntryPoint {
         RootPanel.get("content").add(cloud);
     }
     
+    private void setWordColor(String word, String color){
+    	List<Tag> tags = cloud.getTags();
+    	if(tags!=null){
+    		for(Tag t : tags){
+    			if(((WordTag)t).getWord().equalsIgnoreCase(word))
+    				((WordTag)t).setColor(color);
+    		}
+    	}
+    }
+    
     private void refresh(){
 
         service.getTags(new AsyncCallback<List<Tag>>(){
@@ -86,7 +96,6 @@ public class MyAppTagCloud implements EntryPoint {
             @Override
             public void onSuccess(List<Tag> result) {
                 cloud.setTags(result);
-                cloud.refresh();
                 
                 delPanel.clear();
                 for(final Tag t : cloud.getTags()){
@@ -99,6 +108,16 @@ public class MyAppTagCloud implements EntryPoint {
                 	});
                 	delPanel.add(b);
                 }
+                
+                setWordColor("gwt", "red");
+                setWordColor("android", "green");
+                setWordColor("appengine", "blue");
+                setWordColor("eclipse", "purple");
+                setWordColor("rails", "red");
+                setWordColor("ruby", "red");
+                setWordColor("apple", "lightgrey");
+                
+                cloud.refresh();
             }
             
         });

@@ -4,6 +4,7 @@ package gdurelle.tagcloud.client.tags;
 @SuppressWarnings("serial")
 public class WordTag extends Tag{
     private String word;
+    private String color;
     
     public WordTag() {
         super();
@@ -12,6 +13,7 @@ public class WordTag extends Tag{
     public WordTag(String word) {
         this.word = word;
         numberOfOccurences = 1;
+        color=null;
     }
 
     public WordTag(String word, String link) {
@@ -27,7 +29,15 @@ public class WordTag extends Tag{
         this.word = word;
     }
     
-    @Override
+    public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	@Override
     public int hashCode() {
         return word.hashCode();
     }
