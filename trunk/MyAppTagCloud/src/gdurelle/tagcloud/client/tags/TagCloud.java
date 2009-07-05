@@ -64,6 +64,14 @@ public class TagCloud extends Composite {
 		if (tags != null)
 			this.tags.addAll(tags);
 	}
+	
+	/**
+	 * Retrieve the list of tags in the cloud.
+	 * @return
+	 */
+	public List<Tag> getTags(){
+		return tags;
+	}
 
 	/**
 	 * Add a word to the tagcloud list.

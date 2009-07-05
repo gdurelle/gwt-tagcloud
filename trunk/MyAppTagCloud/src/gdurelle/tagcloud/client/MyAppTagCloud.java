@@ -2,6 +2,7 @@ package gdurelle.tagcloud.client;
 
 import gdurelle.tagcloud.client.tags.Tag;
 import gdurelle.tagcloud.client.tags.TagCloud;
+import gdurelle.tagcloud.client.tags.WordTag;
 
 import java.util.List;
 
@@ -23,27 +24,17 @@ public class MyAppTagCloud implements EntryPoint {
 	 
     private TagServiceAsync service = GWT.create(TagService.class);
     private TagCloud cloud = new TagCloud();
+    private HorizontalPanel delPanel;
 
     public void onModuleLoad() {
         cloud.setColored(true);
         cloud.setWidth("400px");
         
-        service.getTags(new AsyncCallback<List<Tag>>(){
-
-            @Override
-            public void onFailure(Throwable caught) {
-                
-            }
-
-            @Override
-            public void onSuccess(List<Tag> result) {
-                cloud.setTags(result);
-                cloud.refresh();
-            }
-            
-        });
+        refresh();
         
-      //to add tags
+        /*
+         * To add tags
+         */
         final TextBox tagbox = new TextBox();
         tagbox.setHeight("30px");
         Button tagbtn = new Button("Add");
@@ -73,7 +64,13 @@ public class MyAppTagCloud implements EntryPoint {
         tagbox.addKeyPressHandler(press);
         tagbtn.addClickHandler(click);
         
+        /*
+         * To remove tags
+         */
+        delPanel = new HorizontalPanel();
+        
         RootPanel.get("content").add(addPanel);
+        RootPanel.get("content").add(delPanel);
         RootPanel.get("content").add(cloud);
     }
     
@@ -90,24 +87,36 @@ public class MyAppTagCloud implements EntryPoint {
             public void onSuccess(List<Tag> result) {
                 cloud.setTags(result);
                 cloud.refresh();
+                
+                delPanel.clear();
+                for(final Tag t : cloud.getTags()){
+                	Button b = new Button(((WordTag)t).getWord());
+                	b.addClickHandler(new ClickHandler(){
+        				@Override
+        				public void onClick(ClickEvent event) {
+        					removeTag(((WordTag)t).getWord());
+        				}
+                	});
+                	delPanel.add(b);
+                }
             }
             
         });
     }
     
-//    private void removeTag(String tag){
-//        service.removeTag(tag, new AsyncCallback<Void>(){
-//            @Override
-//            public void onFailure(Throwable caught) {
-//                Window.alert("ERROR in tuto.client.MyAppEngine.removeTag(String tag) method");
-//            }
-//
-//            @Override
-//            public void onSuccess(Void result) {
-//                refresh();
-//            }
-//        });
-//    }
+    private void removeTag(String tag){
+        service.removeTag(tag, new AsyncCallback<Void>(){
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("ERROR in tuto.client.MyAppEngine.removeTag(String tag) method");
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+                refresh();
+            }
+        });
+    }
     
     private void addTag(String tag){
         service.addTag(tag, new AsyncCallback<Void>(){
