@@ -13,6 +13,7 @@ import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -70,21 +71,22 @@ public class TagServiceImpl extends RemoteServiceServlet implements TagService {
     @Override
     public void removeTag(String tag) {
 
-//        if (pm.isClosed())
-//            pm = pmf.getPersistenceManager();
-//
-//        String query = "select from " + TagBean.class.getName();
-//        List<TagBean> tags = (List<TagBean>) pm.newQuery(query).execute();
-//
-//        for (TagBean t : tags) {
-//            if (((WordTagBean) t).getWord().equals(tag)) {
-//                try {
-//                    pm.deletePersistent(t);
-//                } finally {
-//                    pm.close();
-//                }
-//            }
-//        }
+        if (pm.isClosed())
+            pm = pmf.getPersistenceManager();
+
+        Query query = pm.newQuery(WordTagBean.class, "word == '"+tag+"'");
+        
+        List<WordTagBean> tags = (List<WordTagBean>) query.execute();
+
+        for (WordTagBean w : tags) {
+            if (w.getWord().equals(tag)) {
+                try {
+                    pm.deletePersistent(w);
+                } finally {
+                    pm.close();
+                }
+            }
+        }
     }
 
 }
