@@ -84,6 +84,16 @@ public class MyAppTagCloud implements EntryPoint {
     	}
     }
     
+    private void setWordOrientation (String word, int orientation){
+        List<Tag> tags = cloud.getTags();
+        if(tags!=null){
+            for(Tag t : tags){
+                if(((WordTag)t).getWord().equalsIgnoreCase(word))
+                    ((WordTag)t).setOrientation(orientation);
+            }
+        }
+    }
+    
     private void refresh(){
 
         service.getTags(new AsyncCallback<List<Tag>>(){
@@ -116,6 +126,14 @@ public class MyAppTagCloud implements EntryPoint {
                 setWordColor("rails", "red");
                 setWordColor("ruby", "red");
                 setWordColor("apple", "lightgrey");
+                
+                setWordOrientation("gwt", Tag.VERTICAL_LEFT);
+                setWordOrientation("rails", Tag.VERTICAL_RIGHT);
+                setWordOrientation("apple", Tag.VERTICAL_LEFT);
+                setWordOrientation("ruby", Tag.VERTICAL_LEFT);
+                setWordOrientation("Eclipse", Tag.VERTICAL_LEFT);
+                setWordOrientation("IT", Tag.VERTICAL_RIGHT);
+                
                 
                 cloud.refresh();
             }

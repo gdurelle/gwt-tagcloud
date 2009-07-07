@@ -113,3 +113,12 @@
 .darkgrey a{
     color: #666666;
 }
+
+.verticalL a{
+	writing-mode: tb-rl;
+    filter: flipV() flipH();
+}
+
+.verticalR a{
+	writing-mode: tb-rl;
+}
