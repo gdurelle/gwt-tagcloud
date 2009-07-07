@@ -16,6 +16,7 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -36,9 +37,10 @@ public class MyAppTagCloud implements EntryPoint {
          * To add tags
          */
         final TextBox tagbox = new TextBox();
-        tagbox.setHeight("30px");
+        tagbox.setHeight("20px");
         Button tagbtn = new Button("Add");
         HorizontalPanel addPanel = new HorizontalPanel();
+        addPanel.add(new HTML("Add a tag :&nbsp;"));
         addPanel.add(tagbox);
         addPanel.add(tagbtn);
         
@@ -68,6 +70,7 @@ public class MyAppTagCloud implements EntryPoint {
          * To remove tags
          */
         delPanel = new HorizontalPanel();
+        delPanel.add(new HTML("Delete tag :&nbsp;"));
         
         RootPanel.get("content").add(addPanel);
         RootPanel.get("content").add(delPanel);
@@ -108,6 +111,7 @@ public class MyAppTagCloud implements EntryPoint {
                 cloud.setTags(result);
                 
                 delPanel.clear();
+                delPanel.add(new HTML("Delete tags : "));
                 for(final Tag t : cloud.getTags()){
                 	Button b = new Button(((WordTag)t).getWord());
                 	b.addClickHandler(new ClickHandler(){
