@@ -160,6 +160,11 @@ public class TagCloud extends Composite {
 		InlineHTML inline = new InlineHTML(" <a href='" + w.getLink() + "'>"
 				+ w.getWord() + "</a>&nbsp;");
 		inline.addStyleName("tag");
+		
+		if(w.getOrientation() == Tag.VERTICAL_LEFT)
+		    inline.addStyleName("verticalL");
+		else if(w.getOrientation() == Tag.VERTICAL_RIGHT)
+		    inline.addStyleName("verticalR");
 
 		// Apply the good style corersponding to the number of occurences
 		if (nboc >= (maxOccurences - step)) {

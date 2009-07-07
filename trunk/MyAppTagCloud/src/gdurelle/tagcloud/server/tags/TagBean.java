@@ -23,6 +23,8 @@ public abstract class TagBean implements Serializable{
     protected String link;
     @Persistent
     protected int numberOfOccurences;
+    @Persistent
+    private int orientation;
     
     public String getId() {
         return id;
@@ -61,4 +63,12 @@ public abstract class TagBean implements Serializable{
     @Override
     public abstract boolean equals(Object obj);
 
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+    }
+
+    public int getOrientation() {
+        return orientation;
+    }
+    
 }

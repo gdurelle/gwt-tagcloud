@@ -12,6 +12,7 @@ public class TagDTO {
 			tag = new WordTag(((WordTagBean)tagbean).getWord(), tagbean.getLink());
 			tag.setNumberOfOccurences(tagbean.getNumberOfOccurences());
 			tag.setId(tagbean.getId());
+			tag.setOrientation(tagbean.getOrientation());
 			((WordTag)tag).setColor(((WordTagBean)tagbean).getColor());
 		}
 

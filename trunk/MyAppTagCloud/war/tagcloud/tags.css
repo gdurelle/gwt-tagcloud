@@ -71,7 +71,7 @@
 }
 
 .blue a{
-	color: #0007CFF;
+	color: #007CFF;
 }
 
 .lightblue a{
@@ -112,4 +112,13 @@
 
 .darkgrey a{
     color: #666666;
+}
+
+.verticalL a{
+	writing-mode: tb-rl;
+    filter: flipV() flipH();
+}
+
+.verticalR a{
+	writing-mode: tb-rl;
 }
