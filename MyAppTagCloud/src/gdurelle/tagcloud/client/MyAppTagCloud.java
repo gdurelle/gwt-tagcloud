@@ -130,6 +130,8 @@ public class MyAppTagCloud implements EntryPoint {
                 setWordColor("rails", "red");
                 setWordColor("ruby", "red");
                 setWordColor("apple", "lightgrey");
+                setWordColor("guice", "orange");
+                setWordColor("twitter", "lightblue");
                 
                 setWordOrientation("gwt", Tag.VERTICAL_LEFT);
                 setWordOrientation("rails", Tag.VERTICAL_RIGHT);

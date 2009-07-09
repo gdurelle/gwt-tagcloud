@@ -1,7 +1,22 @@
+/*****************************
+	Tagcloud and tags
+******************************/
+
+.cloud{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	float: left;
+}
+
 .tag a{
+	margin: 0;
+	padding: 1px 2px 0 0;
 	text-decoration: none;
 	color: #000000;
 	font-family: Verdana, Arial, serif, sans-serif;
+	position: relative;
+	float: left;
 }
 
 .tag a:hover{
@@ -62,6 +77,10 @@
 	font-weight: 900;
 }
 
+/*****************************
+	Colors
+******************************/
+
 .red a{
 	color: #EE0000;
 }
@@ -113,6 +132,10 @@
 .darkgrey a{
     color: #666666;
 }
+
+/*****************************
+	Orientations
+******************************/
 
 .verticalL a{
 	writing-mode: tb-rl;

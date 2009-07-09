@@ -3,6 +3,7 @@ package gdurelle.tagcloud.client.tags;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -11,7 +12,7 @@ import com.google.gwt.user.client.ui.InlineHTML;
 
 public class TagCloud extends Composite {
 
-	private FlowPanel cloud;
+	private AbsolutePanel cloud;
 	private List<Tag> tags;
 	private int maxNumberOfTags;// the number of tags shown in the cloud.
 	private double minOccurences, maxOccurences, step;
@@ -20,7 +21,8 @@ public class TagCloud extends Composite {
 	private static final int STEP_NUMBER = 10;
 
 	public TagCloud() {
-		cloud = new FlowPanel();
+		cloud = new AbsolutePanel();
+		cloud.addStyleName("cloud");
 		tags = new ArrayList<Tag>();
 		maxNumberOfTags = 20;
 		minOccurences = 1;
