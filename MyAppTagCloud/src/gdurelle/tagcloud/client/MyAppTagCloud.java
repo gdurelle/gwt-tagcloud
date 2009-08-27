@@ -46,7 +46,6 @@ public class MyAppTagCloud implements EntryPoint {
         
         //handlers for the button and its textbox
         ClickHandler click = new ClickHandler(){
-          @Override
           public void onClick(ClickEvent event) {
               addTag(tagbox.getText());
               tagbox.setText("");
@@ -54,7 +53,6 @@ public class MyAppTagCloud implements EntryPoint {
         };
         
         KeyPressHandler press = new KeyPressHandler(){
-          @Override
           public void onKeyPress(KeyPressEvent event) {
               if(event.getCharCode()== KeyCodes.KEY_ENTER){
                   addTag(tagbox.getText());
@@ -101,12 +99,10 @@ public class MyAppTagCloud implements EntryPoint {
 
         service.getTags(new AsyncCallback<List<Tag>>(){
 
-            @Override
             public void onFailure(Throwable caught) {
                 Window.alert("ERROR in tuto.client.MyAppEngine.refresh() method");
             }
 
-            @Override
             public void onSuccess(List<Tag> result) {
                 cloud.setTags(result);
                 
@@ -115,7 +111,6 @@ public class MyAppTagCloud implements EntryPoint {
                 for(final Tag t : cloud.getTags()){
                 	Button b = new Button(((WordTag)t).getWord());
                 	b.addClickHandler(new ClickHandler(){
-        				@Override
         				public void onClick(ClickEvent event) {
         					removeTag(((WordTag)t).getWord());
         				}
@@ -149,12 +144,10 @@ public class MyAppTagCloud implements EntryPoint {
     
     private void removeTag(String tag){
         service.removeTag(tag, new AsyncCallback<Void>(){
-            @Override
             public void onFailure(Throwable caught) {
                 Window.alert("ERROR in tuto.client.MyAppEngine.removeTag(String tag) method");
             }
 
-            @Override
             public void onSuccess(Void result) {
                 refresh();
             }
@@ -164,12 +157,10 @@ public class MyAppTagCloud implements EntryPoint {
     private void addTag(String tag){
         service.addTag(tag, new AsyncCallback<Void>(){
 
-            @Override
             public void onFailure(Throwable caught) {
                 Window.alert("ERROR in tuto.client.MyAppEngine.addTag(String tag) method");
             }
 
-            @Override
             public void onSuccess(Void result) {
                 refresh();
             }
