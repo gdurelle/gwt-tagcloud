@@ -23,7 +23,6 @@ public class TagServiceImpl extends RemoteServiceServlet implements TagService {
     private PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("transactions-optional");
     PersistenceManager pm = pmf.getPersistenceManager();
 
-    @Override
     public void addTag(String tag) {
 
         if (pm.isClosed())
@@ -48,7 +47,6 @@ public class TagServiceImpl extends RemoteServiceServlet implements TagService {
         }
     }
 
-    @Override
     public List<Tag> getTags() {
 
         if (pm.isClosed())
@@ -68,7 +66,6 @@ public class TagServiceImpl extends RemoteServiceServlet implements TagService {
         return tags;
     }
 
-    @Override
     public void removeTag(String tag) {
 
         if (pm.isClosed())
